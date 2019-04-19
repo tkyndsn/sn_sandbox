@@ -11,4 +11,7 @@ export const bodyFont: string = {
 
 export const spacer4: string = "32px";
 
-export const easingCurve: string = "0.01, 0.64, 0.99, 0.56";
+export const transition1: string = {
+  duration: 300,
+  ease: [0.645, 0.045, 0.355, 1]
+};

@@ -5,7 +5,7 @@ import * as variables from "./variables.js";
 
 export default class Button extends React.Component {
   render() {
-    return <Henri>{this.props.text}</Henri>;
+    return <ButtonProps theme={theme1}>{this.props.text}</ButtonProps>;
   }
 
   static defaultProps: Props = {
@@ -13,36 +13,40 @@ export default class Button extends React.Component {
   };
 }
 
-const Henri = styled(
+const ButtonProps = styled(
   posed.button({
     hoverable: true,
     pressable: true,
-    transition: {
-      type: "spring",
-      stiffness: 200,
-      damping: 100,
-      duration: 700
-    },
     init: {
       scale: 1,
-      background: "rgba(" + variables.deepNight + ",.04)"
+      background: `rgb(${props => props.theme.color})`,
+      transition: variables.transition1
     },
     hover: {
-      scale: 1.5,
-      background: "rgba(" + variables.deepNight + ",.08)"
+      scale: 1.04,
+      background: "rgb(233,183,234)",
+      transition: variables.transition1
     },
     press: {
       scale: 1,
-      background: "rgba(" + variables.deepNight + ",.16)"
+      transition: variables.transition1
     }
   })
 )`
-  color: ${variables.deepNight};
-  background: rgba(${variables.deepNight}, 0.04);
+  color: rgb(${props => props.theme.color});
   font-size: ${variables.bodyFont.size};
   line-height: ${variables.bodyFont.lineHeight};
   padding: 0 ${variables.spacer4} 0 ${variables.spacer4};
-  border: 2px solid rgba(${variables.deepNight}, 0.04);
+  border: 2px solid
+    rgba(${props => props.theme.color}, ${props => props.theme.opacityDefault});
   border-radius: ${variables.borderRadius};
   height: 80px;
+  font-family: ApercuBold;
 `;
+
+const theme1 = {
+  colorHexa: "#ff0000",
+  color: variables.deepNight,
+  opacityDefault: 0.05,
+  opacityHover: 0.9
+};

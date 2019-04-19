@@ -39,11 +39,11 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
-  border-radius: ${variables.borderRadius}
+  width: 90vw;
+  height: 90vh;
+  border-radius: ${variables.borderRadius};
   border: 1px solid #f5f5f5;
-  margin: 20px;
+  margin: 20px auto;
 `;
 
 const cards = [
