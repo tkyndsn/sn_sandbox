@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styled, { createGlobalStyle } from "styled-components";
-import Button from "./Button";
+import CTA from "./CTA";
 import * as variables from "./variables";
+import Spacer from "./Spacer";
 
 function App() {
   return (
     <Container className="App">
       <GlobalStyle />
-      <div>
-        <Button text={cards[0].title} />
+      <div className="row">
+        <CTA text={cards[0].title} loading="0" />
+        <Spacer size={variables.spacer4} />
+        <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="20" />
       </div>
     </Container>
   );
@@ -26,12 +29,27 @@ const GlobalStyle = createGlobalStyle`
     src: url("https://uploads-ssl.webflow.com/5ca5e23bdaf05a687b1fc814/5ca5e61aade0bc4b15f8ea11_AkkuratPro-Regular.otf");
   }
 
-  * {
+  body {
+    font-family: AkkuratRegular, Times, serif;
+  }
+
+  *, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     -webkit-font-smoothing: antialiased; 
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     margin: 0;
     padding: 0;
-    font-family: AkkuratRegular, Times, serif;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -39,6 +57,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   width: 90vw;
   height: 90vh;
   border-radius: ${variables.borderRadius};
