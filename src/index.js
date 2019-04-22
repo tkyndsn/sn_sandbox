@@ -10,14 +10,11 @@ function App() {
     <Container className="App">
       <GlobalStyle />
       <div className="row">
-        <CTA text={cards[0].title} loading="0" icon={true} />
+        <CTA text={cards[0].title} loading="0" />
         <Spacer size={variables.spacer4} />
-        <CTA
-          text={cards[1].title}
-          theme={variables.ctaThemeB}
-          loading="20"
-          icon={false}
-        />
+        <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="20" />
+        <Spacer size={variables.spacer4} />
+        <p>hello </p>
       </div>
     </Container>
   );
@@ -33,11 +30,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: AkkuratRegular;
     src: url("https://uploads-ssl.webflow.com/5ca5e23bdaf05a687b1fc814/5ca5e61aade0bc4b15f8ea11_AkkuratPro-Regular.otf");
   }
-
-  body {
-    font-family: AkkuratRegular, Times, serif;
-  }
-
   *, *:after, *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -47,6 +39,39 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     margin: 0;
     padding: 0;
+  }
+
+  html {
+    font-family: AkkuratRegular, Times, serif;
+    font-size: 16px;
+    line-height: calc(16px * 1.555);
+    width: 100%;
+  }
+
+  @media (max-width: 375px) {
+    html, button {
+      font-size: 16px;
+      line-height: calc(16px * 1.555);
+    }
+  }
+
+  @media (min-width: 375px) {
+    html, button {
+      font-size: ${variables.fluidInterpolation(16, 1.25, 375, 1920)};
+      line-height: ${variables.fluidInterpolationLineHeight(
+        16,
+        1.25,
+        375,
+        1920
+      )};
+    }
+  }
+
+  @media (min-width: 1920px) {
+    html, button {
+      font-size: 20px; // baseFontSize * scaleRatio;
+      line-height: calc(20px * 1.555);
+    }
   }
 
   .row {
@@ -79,7 +104,7 @@ const cards = [
     imageRatio: 784 / 1016
   },
   {
-    title: "Tweak anything 👩‍🎨",
+    title: "Tweak anything",
     description:
       "Built with developers in mind. Change element structure, edit CSS, create components, add props and state. We give you access to the underlying React code so you can do what you need right in our tool.",
     image: "https://divjoy.com/static/images/undraw_upload.svg",

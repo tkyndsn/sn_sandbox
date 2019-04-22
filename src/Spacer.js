@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import * as variables from "./variables.js";
 
+type Props = { text: string };
+
 export default class Spacer extends React.Component {
   render() {
     return <SpacerProps size={this.props.size} />;
@@ -13,8 +15,9 @@ export default class Spacer extends React.Component {
 }
 
 const SpacerProps = styled.div`
-  display: block;
+  display: inline-block;
   flex-shrink: 0;
-  width: ${props => props.size};
-  height: ${props => props.size};
+  width: ${props => props.size}rem;
+  height: ${props => props.size}rem;
+  // background: peachpuff;
 `;
