@@ -16,6 +16,9 @@ export const transition1 = {
   ease: [0.645, 0.045, 0.355, 1]
 };
 
+export const ease = "0.645, 0.045, 0.355, 1";
+export const animDuration = "300";
+
 export const ctaThemeA = {
   colorHexa: "#ff0000",
   color: deepNight,

@@ -10,9 +10,14 @@ function App() {
     <Container className="App">
       <GlobalStyle />
       <div className="row">
-        <CTA text={cards[0].title} loading="0" />
+        <CTA text={cards[0].title} loading="0" icon={true} />
         <Spacer size={variables.spacer4} />
-        <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="20" />
+        <CTA
+          text={cards[1].title}
+          theme={variables.ctaThemeB}
+          loading="20"
+          icon={false}
+        />
       </div>
     </Container>
   );

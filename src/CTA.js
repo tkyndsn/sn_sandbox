@@ -2,33 +2,51 @@ import React from "react";
 import posed from "react-pose";
 import styled, { keyframes } from "styled-components";
 import * as variables from "./variables";
-import * as icons from "./icons";
 
 export default class Button extends React.Component {
   render() {
     return (
-      <CTAProps loading={this.props.loading} theme={this.props.theme}>
+      <StyledButton loading={this.props.loading} theme={this.props.theme}>
         {this.props.text}
         <br />
-        {this.props.icon}
-      </CTAProps>
+        {this.props.icon ? arrowRight : ""}
+      </StyledButton>
     );
   }
 
   static defaultProps: Props = {
     text: "Hello World!",
     theme: variables.ctaThemeA,
-    loading: "10",
-    icon: icons.circle
+    loading: "10"
   };
 }
 
-const LoadingAnimation = keyframes`
+const loadingAnimation = keyframes`
   0% { width: 0%; }
   100% { width: 100% }
 `;
 
-const CTAProps = styled(
+const translateArrow1 = keyframes`
+  from {
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(18px, 0px);
+  }
+`;
+
+const translateArrow2 = keyframes`
+  from {
+    transform: translate(-18px, 0px);
+  }
+
+  to {
+    transform: translate(0px, 0px);
+  }
+`;
+
+const StyledButton = styled(
   posed.button({
     hoverable: true,
     pressable: true,
@@ -55,7 +73,7 @@ const CTAProps = styled(
   border: 2px solid
     rgba(${props => props.theme.color}, ${props => props.theme.opacityDefault});
   border-radius: 8px;
-  height: 80px;
+  height: ${props => (props.icon ? "80px" : "48px")};
   font-family: ApercuBold;
   position: relative;
   display: flex;
@@ -72,10 +90,49 @@ const CTAProps = styled(
     height: 100%;
     width: ${props => props.loading}%;
     border-radius: ${variables.borderRadius};
-    // animation: ${LoadingAnimation} 5s linear infinite;
+    // animation: ${loadingAnimation} 5s linear infinite;
   }
-  &:hover {
-    animation-play-state: paused;
-    transform: translate(200px, 150px) rotate(20deg);
+  &:hover ${StyledArrowRight} {
+    .arrow1 {
+      animation: ${translateArrow1} 1 ${
+  variables.animDuration
+}ms cubic-bezier(${variables.ease});
+      transform-origin: center;
+    }
+    .arrow2 {
+      animation: ${translateArrow2} 1 ${
+  variables.animDuration
+}ms cubic-bezier(${variables.ease});
+      transform-origin: center;
+    }
   }
 `;
+
+StyledButton.defaultProps = {
+  icon: true
+};
+
+const StyledArrowRight = styled.svg`
+  stroke: rgb(${variables.deepNight});
+`;
+
+const arrowRight = (
+  <StyledArrowRight
+    width="18"
+    height="18"
+    viewBox="0 0 18 18"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    strokeWidth="2px"
+  >
+    <circle cx="9" cy="9" r="8" />
+    <g className="arrow1">
+      <path d="M9 5L12 9L9 13" />
+      <path d="M5 9H12" />
+    </g>
+    <g className="arrow2">
+      <path d="M9 5L12 9L9 13" />
+      <path d="M5 9H12" />
+    </g>
+  </StyledArrowRight>
+);
