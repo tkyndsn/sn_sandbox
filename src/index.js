@@ -72,7 +72,8 @@ const Container = styled.div`
   height: 90vh;
   border-radius: ${variables.borderRadius};
   border: 1px solid #f5f5f5;
-  margin: 20px auto;
+  margin: 5vh auto;
+  padding: 5vw;
 `;
 
 const cards = [
