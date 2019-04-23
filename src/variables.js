@@ -45,20 +45,39 @@ export const fluidInterpolation = (
   rangeStart,
   rangeEnd
 ) => {
+  const toRem = value => value / 18;
   const maxFontSize = baseFontSize * scaleRatio;
-  const multiplier = (baseFontSize - maxFontSize) / (rangeStart - rangeEnd);
-  const fixed = maxFontSize - multiplier * rangeEnd;
-  return `calc(${fixed}px + ${100 * multiplier}vw)`;
-};
+  const baseRemFontSize = 1;
+  const maxRemFontSize = toRem(maxFontSize);
+  const emRangeStart = toRem(rangeStart);
+  const emRangeEnd = toRem(rangeEnd);
+  const multiplier =
+    (baseRemFontSize - maxRemFontSize) / (emRangeStart - emRangeEnd);
+  const fixed = maxRemFontSize - multiplier * emRangeEnd;
+  return `
+  html, button { font-size: ${baseRemFontSize}rem }
 
-export const fluidInterpolationLineHeight = (
-  baseFontSize,
-  scaleRatio,
-  rangeStart,
-  rangeEnd
-) => {
-  const maxFontSize = baseFontSize * scaleRatio;
-  const multiplier = (baseFontSize - maxFontSize) / (rangeStart - rangeEnd);
-  const fixed = maxFontSize - multiplier * rangeEnd;
-  return `calc((${fixed}px + ${100 * multiplier}vw)*1.555)`;
+  @media (max-width: ${emRangeStart}em) {
+    html, button { 
+      font-size: ${baseRemFontSize}rem; 
+      line-height: calc(${baseRemFontSize}rem*1.555);
+      // background: pink;
+    }
+  }
+
+  @media (min-width: ${emRangeStart}em) {
+    html, button { 
+      font-size: calc(${fixed}rem + ${100 * multiplier}vw); 
+      line-height: calc((${fixed}rem + ${100 * multiplier}vw)*1.555);
+      // background: grey;
+    }
+  }
+
+  @media (min-width: ${emRangeEnd}em) {
+    html, button { 
+      font-size: ${maxRemFontSize}rem;
+      line-height: calc(${maxRemFontSize}rem*1.555);
+      // background: yellowgreen;
+    }
+  }`;
 };

@@ -42,37 +42,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: AkkuratRegular, Times, serif;
-    font-size: 16px;
-    line-height: calc(16px * 1.555);
+    font-family: AkkuratRegular, Helvetica, serif;
+    font-size: 18px;
+    line-height: calc(18px * 1.555);
     width: 100%;
   }
-
-  @media (max-width: 375px) {
-    html, button {
-      font-size: 16px;
-      line-height: calc(16px * 1.555);
-    }
-  }
-
-  @media (min-width: 375px) {
-    html, button {
-      font-size: ${variables.fluidInterpolation(16, 1.25, 375, 1920)};
-      line-height: ${variables.fluidInterpolationLineHeight(
-        16,
-        1.25,
-        375,
-        1920
-      )};
-    }
-  }
-
-  @media (min-width: 1920px) {
-    html, button {
-      font-size: 20px; // baseFontSize * scaleRatio;
-      line-height: calc(20px * 1.555);
-    }
-  }
+  
+  ${variables.fluidInterpolation(16, 1.25, 375, 1920)}
 
   .row {
     display: flex;
