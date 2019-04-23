@@ -1,15 +1,19 @@
+// colors
 export const deepNight = "56,64,123";
 export const whiteSky = "245,257,255";
 export const warmlight = "233,204,186";
 
+// border radius
 export const borderRadius = "8px";
 
+// spacers
 export const spacer1 = 8 / 18;
 export const spacer2 = 16 / 18;
 export const spacer3 = 24 / 18;
 export const spacer4 = 32 / 18;
 export const spacer5 = 48 / 18;
 
+//animation related
 export const transition1 = {
   ease: [0.645, 0.045, 0.355, 1]
 };
@@ -17,6 +21,7 @@ export const transition1 = {
 export const ease = "0.645, 0.045, 0.355, 1";
 export const animDuration = 300;
 
+// cta themes
 export const ctaThemeA = {
   colorHexa: "#ff0000",
   color: deepNight,
@@ -24,7 +29,7 @@ export const ctaThemeA = {
   opacityHover: 0.9,
   height: 80,
   heightMobile: 72,
-  paddingSides: spacer4,
+  paddingSides: spacer3,
   icon: true
 };
 
@@ -39,13 +44,14 @@ export const ctaThemeB = {
   icon: true
 };
 
+// responsive function
 export const fluidInterpolation = (
   baseFontSize,
   scaleRatio,
   rangeStart,
   rangeEnd
 ) => {
-  const toRem = value => value / 18;
+  let toRem = value => value / 18;
   let maxFontSize = baseFontSize * scaleRatio;
   let baseRemFontSize = 1;
   let maxRemFontSize = toRem(maxFontSize);

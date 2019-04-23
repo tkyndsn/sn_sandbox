@@ -11,11 +11,12 @@ export default class CTA extends React.Component {
     return (
       <StyledButton loading={this.props.loading} theme={this.props.theme}>
         {this.props.text}
+
         {this.props.theme.icon === true &&
         (this.props.theme.height === 80 || this.props.theme.heightMobile === 72)
           ? ArrowRight
           : ""}
-
+        {/*If height values inside button theme are not 80 or 72, button will be one line. So addition fo a spacer betwern text and icon */}
         {this.props.theme.icon === true &&
         (this.props.theme.height !== 80 ||
           this.props.theme.heightMobile !== 72) ? (
@@ -38,6 +39,7 @@ export default class CTA extends React.Component {
   };
 }
 
+// animations
 const loadingAnimation = keyframes`
   0% { width: 0%; }
   100% { width: 100% }
@@ -63,6 +65,7 @@ const translateArrow2 = keyframes`
   }
 `;
 
+// svg arrow right icon
 const StyledArrowRight = styled.svg`
   stroke: rgb(${variables.deepNight});
 `;
@@ -88,6 +91,7 @@ const ArrowRight = (
   </StyledArrowRight>
 );
 
+// button configuration
 const StyledButton = styled(
   posed.button({
     hoverable: true,

@@ -24,6 +24,7 @@ function App() {
   );
 }
 
+// global CSS
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: ApercuBold;
@@ -76,6 +77,7 @@ const Container = styled.div`
   padding: 5vw;
 `;
 
+// content
 const cards = [
   {
     title: "Converse with the cosmos",
