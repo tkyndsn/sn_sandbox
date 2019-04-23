@@ -46,14 +46,14 @@ export const fluidInterpolation = (
   rangeEnd
 ) => {
   const toRem = value => value / 18;
-  const maxFontSize = baseFontSize * scaleRatio;
-  const baseRemFontSize = 1;
-  const maxRemFontSize = toRem(maxFontSize);
-  const emRangeStart = toRem(rangeStart);
-  const emRangeEnd = toRem(rangeEnd);
-  const multiplier =
+  let maxFontSize = baseFontSize * scaleRatio;
+  let baseRemFontSize = 1;
+  let maxRemFontSize = toRem(maxFontSize);
+  let emRangeStart = toRem(rangeStart);
+  let emRangeEnd = toRem(rangeEnd);
+  let multiplier =
     (baseRemFontSize - maxRemFontSize) / (emRangeStart - emRangeEnd);
-  const fixed = maxRemFontSize - multiplier * emRangeEnd;
+  let fixed = maxRemFontSize - multiplier * emRangeEnd;
   return `
   html, button { font-size: ${baseRemFontSize}rem }
 
