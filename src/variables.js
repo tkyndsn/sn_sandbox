@@ -4,7 +4,7 @@ export const whiteSky = "245,247,255";
 export const warmlight = "233,204,186";
 
 // border radius
-export const borderRadius = "8px";
+export const borderRadius = 8;
 
 // spacers
 export const spacer0 = 0;
@@ -22,14 +22,15 @@ export const transition1 = {
 };
 
 export const ease = "0.645, 0.045, 0.355, 1";
-export const animDuration = 300;
+export const animDuration = 240;
 
 // cta themes
 export const ctaThemeA = {
   colorHexa: "#ff0000",
   color: deepNight,
-  opacityDefault: 0.05,
-  opacityHover: 0.9,
+  opacityDefault: 0.04,
+  opacityHover: 0.08,
+  opacityActive: 0.12,
   height: 80,
   heightMobile: 72,
   paddingSides: spacer3,
@@ -39,12 +40,25 @@ export const ctaThemeA = {
 export const ctaThemeB = {
   colorHexa: "orange",
   color: "255,0,0",
-  opacityDefault: 0.05,
-  opacityHover: 0.9,
+  opacityDefault: 0.04,
+  opacityHover: 0.08,
+  opacityActive: 0.12,
   height: 48,
   heightMobile: 48,
   paddingSides: spacer2,
   icon: true
+};
+
+export const ctaThemeC = {
+  colorHexa: "orange",
+  color: "255,0,0",
+  opacityDefault: 0.04,
+  opacityHover: 0.08,
+  opacityActive: 0.12,
+  height: 48,
+  heightMobile: 48,
+  paddingSides: spacer2,
+  icon: false
 };
 //responsive
 

@@ -92,41 +92,14 @@ const ArrowRight = (
 );
 
 // button configuration
-const StyledButton = styled(
-  posed.button({
-    hoverable: true,
-    pressable: true,
-    init: {
-      scale: 1,
-      background: "rgb(233,183,34)",
-      transition: {
-        duration: variables.animDuration,
-        ease: variables.transition1.ease
-      }
-    },
-    hover: {
-      scale: 1.02,
-      background: "rgb(233,183,144)",
-      transition: {
-        duration: variables.animDuration,
-        ease: variables.transition1.ease
-      }
-    },
-    press: {
-      scale: 1,
-      transition: {
-        duration: variables.animDuration,
-        ease: variables.transition1.ease
-      }
-    }
-  })
-)`
+const StyledButton = styled.button`
+  will-change: transform;
   color: rgb(${props => props.theme.color});
-  padding: 0 ${props => props.theme.paddingSides}rem 0 ${props =>
-  props.theme.paddingSides}rem;
+  padding: 0 ${props => props.theme.paddingSides}rem 0
+    ${props => props.theme.paddingSides}rem;
   border: 2px solid
     rgba(${props => props.theme.color}, ${props => props.theme.opacityDefault});
-  border-radius: 8px;
+  border-radius: ${variables.borderRadius}px;
   height: ${props => props.theme.height}px;
   @media (max-width: 375px) {
     height: ${props => props.theme.heightMobile}px;
@@ -137,6 +110,11 @@ const StyledButton = styled(
   align-items: center;
   justify-content: center;
   flex-direction: ${props => (props.theme.height === 80 ? "column" : "row")};
+  transition: all ${variables.animDuration}ms cubic-bezier(${variables.ease});
+  background: rgba(
+    ${props => props.theme.color},
+    ${props => props.theme.opacityDefault}
+  );
   &:after {
     background: rgba(${props => props.theme.color}, 0.2);
     display: ${props => (props.loading === "0" ? "none" : "block")};
@@ -146,20 +124,34 @@ const StyledButton = styled(
     left: 0;
     height: 100%;
     width: ${props => props.loading}%;
-    border-radius: ${variables.borderRadius};
-    // animation: ${loadingAnimation} 5s linear infinite;
+    border-radius: ${variables.borderRadius - 2}px;
+    animation: ${loadingAnimation} 8s linear infinite;
+  }
+  &:hover {
+    transform: scale(1.02);
+    transition: all ${variables.animDuration}ms cubic-bezier(${variables.ease});
+    background: rgba(
+      ${props => props.theme.color},
+      ${props => props.theme.opacityHover}
+    );
+  }
+  &:active {
+    transform: scale(1);
+    transition: all 120ms cubic-bezier(${variables.ease});
+    background: rgba(
+      ${props => props.theme.color},
+      ${props => props.theme.opacityActive}
+    );
   }
   &:hover ${StyledArrowRight} {
     .arrow1 {
-      animation: ${translateArrow1} 1 ${
-  variables.animDuration
-}ms cubic-bezier(${variables.ease});
+      animation: ${translateArrow1} 1 ${variables.animDuration}ms
+        cubic-bezier(${variables.ease});
       transform-origin: center;
     }
     .arrow2 {
-      animation: ${translateArrow2} 1 ${
-  variables.animDuration
-}ms cubic-bezier(${variables.ease});
+      animation: ${translateArrow2} 1 ${variables.animDuration}ms
+        cubic-bezier(${variables.ease});
       transform-origin: center;
     }
   }

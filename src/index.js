@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import CTA from "./CTA";
-import * as variables from "./variables";
 import Spacer from "./Spacer";
+import DialogAnimation from "./DialogAnimation";
+import * as variables from "./variables";
 
 function App() {
   return (
@@ -12,7 +13,11 @@ function App() {
       <div className="row">
         <CTA text={cards[0].title} loading="0" />
         <Spacer size={variables.spacer4} />
-        <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="20" />
+        <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="0" />
+        <Spacer size={variables.spacer4} />
+        <CTA text={cards[1].title} theme={variables.ctaThemeC} loading="20" />
+        <Spacer size={variables.spacer4} />
+        <DialogAnimation />
       </div>
     </Container>
   );
@@ -65,7 +70,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   width: 90vw;
   height: 90vh;
-  border-radius: ${variables.borderRadius};
+  border-radius: ${variables.borderRadius}px;
   border: 1px solid #f5f5f5;
   margin: 5vh auto;
   padding: 5vw;
