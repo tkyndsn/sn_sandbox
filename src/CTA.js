@@ -105,7 +105,7 @@ const StyledButton = styled(
       }
     },
     hover: {
-      scale: 1.04,
+      scale: 1.02,
       background: "rgb(233,183,144)",
       transition: {
         duration: variables.animDuration,

@@ -13,12 +13,6 @@ function App() {
         <CTA text={cards[0].title} loading="0" />
         <Spacer size={variables.spacer4} />
         <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="20" />
-        <Spacer size={variables.spacer4} />
-        <p>
-          Using the word cosmos rather than the word universe implies viewing
-          the universe as a complex and orderly system or entity; the opposite
-          of chaos.
-        </p>
       </div>
     </Container>
   );

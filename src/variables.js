@@ -1,20 +1,23 @@
 // colors
 export const deepNight = "56,64,123";
-export const whiteSky = "245,257,255";
+export const whiteSky = "245,247,255";
 export const warmlight = "233,204,186";
 
 // border radius
 export const borderRadius = "8px";
 
 // spacers
+export const spacer0 = 0;
 export const spacer1 = 8 / 18;
 export const spacer2 = 16 / 18;
 export const spacer3 = 24 / 18;
 export const spacer4 = 32 / 18;
 export const spacer5 = 48 / 18;
+export const spacer7 = 72 / 18;
 
 //animation related
 export const transition1 = {
+  duration: 300,
   ease: [0.645, 0.045, 0.355, 1]
 };
 
@@ -43,6 +46,7 @@ export const ctaThemeB = {
   paddingSides: spacer2,
   icon: true
 };
+//responsive
 
 // responsive function
 export const fluidInterpolation = (
