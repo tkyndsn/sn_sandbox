@@ -8,21 +8,27 @@ type Props = { text: string };
 
 export default class CTA extends React.Component {
   render() {
+    {
+      console.log(this.props);
+    }
     return (
       <StyledButton loading={this.props.loading} theme={this.props.theme}>
         {this.props.text}
 
         {this.props.theme.icon === true &&
-        (this.props.theme.height === 80 || this.props.theme.heightMobile === 72)
-          ? ArrowRight
-          : ""}
+        (this.props.theme.height === 80 ||
+          this.props.theme.heightMobile === 72) ? (
+          <ArrowRight theme={this.props.theme} />
+        ) : (
+          ""
+        )}
         {/*If height values inside button theme are not 80 or 72, button will be one line. So addition fo a spacer betwern text and icon */}
         {this.props.theme.icon === true &&
         (this.props.theme.height !== 80 ||
           this.props.theme.heightMobile !== 72) ? (
           <>
             <Spacer size={variables.spacer1} />
-            {ArrowRight}
+            <ArrowRight theme={this.props.theme} />
           </>
         ) : (
           ""
@@ -34,8 +40,7 @@ export default class CTA extends React.Component {
   static defaultProps: Props = {
     text: "Hello World!",
     theme: variables.ctaThemeA,
-    loading: "10",
-    icon: true
+    loading: "10"
   };
 }
 
@@ -67,10 +72,10 @@ const translateArrow2 = keyframes`
 
 // svg arrow right icon
 const StyledArrowRight = styled.svg`
-  stroke: rgb(${variables.deepNight});
+  stroke: rgb(${props => props.theme.color});
 `;
 
-const ArrowRight = (
+const ArrowRight = ({ theme }) => (
   <StyledArrowRight
     width="18"
     height="18"
@@ -78,6 +83,7 @@ const ArrowRight = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     strokeWidth="2px"
+    theme={theme}
   >
     <circle cx="9" cy="9" r="8" />
     <g className="arrow1">
@@ -116,7 +122,7 @@ const StyledButton = styled.button`
     ${props => props.theme.opacityDefault}
   );
   &:after {
-    background: rgba(${props => props.theme.color}, 0.2);
+    background: rgba(${props => props.theme.color}, 0.08);
     display: ${props => (props.loading === "0" ? "none" : "block")};
     position: absolute;
     content: "";
@@ -125,11 +131,10 @@ const StyledButton = styled.button`
     height: 100%;
     width: ${props => props.loading}%;
     border-radius: ${variables.borderRadius - 2}px;
-    animation: ${loadingAnimation} 8s linear infinite;
+    animation: ${loadingAnimation} 5s linear infinite;
   }
   &:hover {
     transform: scale(1.02);
-    transition: all ${variables.animDuration}ms cubic-bezier(${variables.ease});
     background: rgba(
       ${props => props.theme.color},
       ${props => props.theme.opacityHover}
@@ -137,7 +142,6 @@ const StyledButton = styled.button`
   }
   &:active {
     transform: scale(1);
-    transition: all 120ms cubic-bezier(${variables.ease});
     background: rgba(
       ${props => props.theme.color},
       ${props => props.theme.opacityActive}

@@ -22,7 +22,7 @@ export const transition1 = {
 };
 
 export const ease = "0.645, 0.045, 0.355, 1";
-export const animDuration = 240;
+export const animDuration = 300;
 
 // cta themes
 export const ctaThemeA = {
@@ -50,7 +50,7 @@ export const ctaThemeB = {
 };
 
 export const ctaThemeC = {
-  colorHexa: "orange",
+  colorHexa: "blue",
   color: "255,0,0",
   opacityDefault: 0.04,
   opacityHover: 0.08,

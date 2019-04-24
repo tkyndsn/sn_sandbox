@@ -35,7 +35,7 @@ const animationWorldListItem = keyframes`
   }
 
   to {
-    transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -22px, 0);
     opacity: 0;
   }
 `;
