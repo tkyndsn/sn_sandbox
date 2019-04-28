@@ -2,7 +2,6 @@ import React from "react";
 import posed from "react-pose";
 import styled, { keyframes } from "styled-components";
 import * as variables from "./variables";
-import Spacer from "./Spacer";
 
 type Props = { text: string };
 
@@ -11,7 +10,9 @@ export default class CTA extends React.Component {
     return (
       <StyledButton loading={this.props.loading} theme={this.props.theme}>
         {this.props.text}
-        <Icon theme={this.props.theme} icon={this.props.theme.iconPath} />
+        {this.props.theme.icon === true ? (
+          <Icon theme={this.props.theme} icon={this.props.theme.iconPath} />
+        ) : null}
       </StyledButton>
     );
   }
@@ -19,7 +20,7 @@ export default class CTA extends React.Component {
   static defaultProps: Props = {
     text: "Hello World!",
     theme: variables.ctaThemeA,
-    loading: "10"
+    loading: "0"
   };
 }
 
@@ -50,13 +51,13 @@ const translateArrow2 = keyframes`
 `;
 
 // icon construction
-const StyledArrowRight = styled.svg`
+const StyledIcon = styled.svg`
   stroke: rgb(${props => props.theme.color});
   width: ${props => props.theme.iconWidth}px;
 `;
 
 const Icon = ({ theme, icon }) => (
-  <StyledArrowRight
+  <StyledIcon
     height="18"
     width="auto"
     preserveAspectRatio="none"
@@ -66,7 +67,7 @@ const Icon = ({ theme, icon }) => (
     theme={theme}
   >
     {icon}
-  </StyledArrowRight>
+  </StyledIcon>
 );
 
 // button configuration
@@ -121,7 +122,7 @@ const StyledButton = styled.button`
       ${props => props.theme.opacityActive}
     );
   }
-  &:hover ${StyledArrowRight} {
+  &:hover ${StyledIcon} {
     .arrow1 {
       animation: ${translateArrow1} 1 ${variables.animDuration}ms
         cubic-bezier(${variables.ease});

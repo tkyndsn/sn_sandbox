@@ -15,13 +15,13 @@ function App() {
       <Spacer size={variables.spacer7} />
       <div className="row">
         <div>
-          <CTA text={cards[0].title} loading="0" />
+          <CTA text={cards[0].title} />
           <Spacer size={variables.spacer4} />
-          <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="0" />
+          <CTA text={cards[1].title} theme={variables.ctaThemeB} />
           <Spacer size={variables.spacer4} />
           <CTA text={cards[1].title} theme={variables.ctaThemeC} loading="20" />
           <Spacer size={variables.spacer4} />
-          <CTA text="" theme={variables.ctaThemeD} loading="0" />
+          <CTA text="" theme={variables.ctaThemeD} />
           {/* <DialogAnimation /> */}
         </div>
       </div>
@@ -38,6 +38,11 @@ function App() {
 
 // global CSS
 const GlobalStyle = createGlobalStyle`
+  @-moz-document url-prefix() {
+    body {
+      font-weight: lighter !important;
+    }
+  }
   @font-face {
     font-family: ApercuBold;
     src: url("https://uploads-ssl.webflow.com/5ca5e23bdaf05a687b1fc814/5ca5e60341698ef195fc40ca_apercu_bold.otf");
@@ -63,9 +68,25 @@ const GlobalStyle = createGlobalStyle`
     font-size: 18px;
     line-height: calc(18px * 1.555);
     width: 100%;
+    color: rgb(${variables.clearNight});
   }
   
   ${variables.fluidInterpolation(16, 1.25, 375, 1920)}
+
+  h1 {
+    font-family: ApercuBold;
+    font-size: 3.055rem;
+    line-height: 3.333rem;
+    color: rgb(${variables.deepNight});
+  }
+
+  .label {
+    text-transform: uppercase;
+    font-size: 0.777rem;
+    line-height: 0.888rem;
+    font-family: ApercuBold;
+    color: rgb(${variables.deepNight});
+  }
 
   .row {
     display: flex;

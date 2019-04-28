@@ -2,6 +2,7 @@ import React from "react";
 
 // colors
 export const deepNight = "56,64,123";
+export const clearNight = "77,93,131";
 export const whiteSky = "245,247,255";
 export const warmlight = "233,204,186";
 
@@ -16,6 +17,7 @@ export const spacer3 = 24 / 18;
 export const spacer4 = 32 / 18;
 export const spacer5 = 48 / 18;
 export const spacer7 = 72 / 18;
+export const spacer8 = 120 / 18;
 
 //animation related
 export const transition1 = {
@@ -119,7 +121,7 @@ export const fluidInterpolation = (
   html, button { font-size: ${baseRemFontSize}rem }
 
   @media (max-width: ${emRangeStart}em) {
-    html, button { 
+    html, button, p { 
       font-size: ${baseRemFontSize}rem; 
       line-height: calc(${baseRemFontSize}rem*1.555);
       // background: pink;
@@ -127,7 +129,7 @@ export const fluidInterpolation = (
   }
 
   @media (min-width: ${emRangeStart}em) {
-    html, button { 
+    html, button, p { 
       font-size: calc(${fixed}rem + ${100 * multiplier}vw); 
       line-height: calc((${fixed}rem + ${100 * multiplier}vw)*1.555);
       // background: grey;
@@ -135,7 +137,7 @@ export const fluidInterpolation = (
   }
 
   @media (min-width: ${emRangeEnd}em) {
-    html, button { 
+    html, button, p { 
       font-size: ${maxRemFontSize}rem;
       line-height: calc(${maxRemFontSize}rem*1.555);
       // background: yellowgreen;

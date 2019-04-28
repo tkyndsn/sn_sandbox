@@ -24,15 +24,59 @@ export default class HowItWorks extends React.Component {
         <Pastille />
         <FeaturesList>
           <FeaturesCopy>
-            <CopyCard>content</CopyCard>
-            <CopyCard>content</CopyCard>
-            <CopyCard>content</CopyCard>
-            <CopyCard>content</CopyCard>
+            <CopyCard>
+              <div>
+                <span className="label">How it Works</span>
+                <Spacer size={variables.spacer1} />
+                <h1>Snips Brings Voice to the Edge</h1>
+                <Spacer size={variables.spacer3} />
+                <p>
+                  Discover how the end-to-end Snips Voice Platform turns speech
+                  into action with cutting-edge machine learning.
+                </p>
+              </div>
+            </CopyCard>
+            <CopyCard>
+              <div>
+                <span className="label">How it Works</span>
+                <Spacer size={variables.spacer1} />
+                <h1>Snips Brings Voice to the Edge</h1>
+                <Spacer size={variables.spacer3} />
+                <p>
+                  Discover how the end-to-end Snips Voice Platform turns speech
+                  into action with cutting-edge machine learning.
+                </p>
+              </div>
+            </CopyCard>
+            <CopyCard>
+              <div>
+                <span className="label">How it Works</span>
+                <Spacer size={variables.spacer1} />
+                <h1>Snips Brings Voice to the Edge</h1>
+                <Spacer size={variables.spacer3} />
+                <p>
+                  Discover how the end-to-end Snips Voice Platform turns speech
+                  into action with cutting-edge machine learning.
+                </p>
+              </div>
+            </CopyCard>
+            <CopyCard>
+              <div>
+                <span className="label">How it Works</span>
+                <Spacer size={variables.spacer1} />
+                <h1>Snips Brings Voice to the Edge</h1>
+                <Spacer size={variables.spacer3} />
+                <p>
+                  Discover how the end-to-end Snips Voice Platform turns speech
+                  into action with cutting-edge machine learning.
+                </p>
+              </div>
+            </CopyCard>
           </FeaturesCopy>
           <VisualTrack>
             <VisualTrackWrap>
               <FeaturesVisuals>
-                <FeatureVisualCard>illustration</FeatureVisualCard>
+                <FeatureVisualCard />
               </FeaturesVisuals>
             </VisualTrackWrap>
           </VisualTrack>
@@ -78,7 +122,7 @@ const FeaturesList = styled.div`
   display: -ms-flexbox;
   display: flex;
   width: 86vw;
-  margin: 0 auto;
+  padding-left: ${variables.spacer7}rem;
 `;
 
 const VisualTrack = styled.div`
