@@ -2,7 +2,6 @@ import React from "react";
 import posed from "react-pose";
 import styled, { keyframes } from "styled-components";
 import * as variables from "./variables";
-import Spacer from "./Spacer";
 
 type Props = { text: string };
 
@@ -12,7 +11,7 @@ export default class DialogAnimation extends React.Component {
       <Container>
         <WordList>
           {listData.map((data, i) => (
-            <WordListItem key={i} delay={i * 0.3} translation={i * 22}>
+            <WordListItem key={i} delay={i * 0.3} pose={position}>
               {data.title + i}
             </WordListItem>
           ))}
@@ -35,22 +34,21 @@ const animationWorldListItem = keyframes`
   }
 
   to {
-    transform: translate3d(0, -22px, 0);
-    opacity: 0;
+    transform: translate3d(0, 0px, 0);
+    opacity: 1;
   }
 `;
 
-const WordListItem = styled.li`
+const animProps = {
+  left: { x: -100 },
+  right: { x: 100 }
+};
+
+const WordListItem = styled(posed.li(animProps))`
   background: lightcyan;
   list-style-type: none;
   text-align: center;
   padding: ${variables.spacer1}rem;
-  animation: ${animationWorldListItem} 1 1s cubic-bezier(${variables.ease});
-  animation-delay: ${props => props.delay}s;
-  perspective: 10px;
-  &:nth-child(even) {
-    background: lightsalmon;
-  }
 `;
 
 const listData = [
@@ -59,8 +57,5 @@ const listData = [
   },
   {
     title: "Chappie!"
-  },
-  {
-    title: "Jarvis!"
   }
 ];

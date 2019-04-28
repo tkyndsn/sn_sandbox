@@ -8,31 +8,10 @@ type Props = { text: string };
 
 export default class CTA extends React.Component {
   render() {
-    {
-      console.log(this.props);
-    }
     return (
       <StyledButton loading={this.props.loading} theme={this.props.theme}>
         {this.props.text}
-
-        {this.props.theme.icon === true &&
-        (this.props.theme.height === 80 ||
-          this.props.theme.heightMobile === 72) ? (
-          <ArrowRight theme={this.props.theme} />
-        ) : (
-          ""
-        )}
-        {/*If height values inside button theme are not 80 or 72, button will be one line. So addition fo a spacer betwern text and icon */}
-        {this.props.theme.icon === true &&
-        (this.props.theme.height !== 80 ||
-          this.props.theme.heightMobile !== 72) ? (
-          <>
-            <Spacer size={variables.spacer1} />
-            <ArrowRight theme={this.props.theme} />
-          </>
-        ) : (
-          ""
-        )}
+        <Icon theme={this.props.theme} icon={this.props.theme.iconPath} />
       </StyledButton>
     );
   }
@@ -70,30 +49,23 @@ const translateArrow2 = keyframes`
   }
 `;
 
-// svg arrow right icon
+// icon construction
 const StyledArrowRight = styled.svg`
   stroke: rgb(${props => props.theme.color});
+  width: ${props => props.theme.iconWidth}px;
 `;
 
-const ArrowRight = ({ theme }) => (
+const Icon = ({ theme, icon }) => (
   <StyledArrowRight
-    width="18"
     height="18"
-    viewBox="0,0,18,18"
+    width="auto"
+    preserveAspectRatio="none"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     strokeWidth="2px"
     theme={theme}
   >
-    <circle cx="9" cy="9" r="8" />
-    <g className="arrow1">
-      <path d="M9 5L12 9L9 13" />
-      <path d="M5 9H12" />
-    </g>
-    <g className="arrow2">
-      <path d="M9 5L12 9L9 13" />
-      <path d="M5 9H12" />
-    </g>
+    {icon}
   </StyledArrowRight>
 );
 
@@ -106,7 +78,7 @@ const StyledButton = styled.button`
   border: 2px solid
     rgba(${props => props.theme.color}, ${props => props.theme.opacityDefault});
   border-radius: ${variables.borderRadius}px;
-  height: ${props => props.theme.height}px;
+  height: ${props => props.theme.height}rem;
   @media (max-width: 375px) {
     height: ${props => props.theme.heightMobile}px;
   }
@@ -115,7 +87,8 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: ${props => (props.theme.height === 80 ? "column" : "row")};
+  flex-direction: ${props =>
+    props.theme.height === 80 / 18 ? "column" : "row"};
   transition: all ${variables.animDuration}ms cubic-bezier(${variables.ease});
   background: rgba(
     ${props => props.theme.color},
@@ -142,6 +115,7 @@ const StyledButton = styled.button`
   }
   &:active {
     transform: scale(1);
+    transition: all 60ms cubic-bezier(${variables.ease});
     background: rgba(
       ${props => props.theme.color},
       ${props => props.theme.opacityActive}

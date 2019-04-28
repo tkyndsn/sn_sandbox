@@ -1,24 +1,37 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import CTA from "./CTA";
 import Spacer from "./Spacer";
 import DialogAnimation from "./DialogAnimation";
 import * as variables from "./variables";
+import HowItWorks from "./HowItWorks";
+import HowItWorksB from "./HowItWorksB";
 
 function App() {
   return (
     <Container className="App">
       <GlobalStyle />
+      <Spacer size={variables.spacer7} />
       <div className="row">
-        <CTA text={cards[0].title} loading="0" />
-        <Spacer size={variables.spacer4} />
-        <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="0" />
-        <Spacer size={variables.spacer4} />
-        <CTA text={cards[1].title} theme={variables.ctaThemeC} loading="20" />
-        <Spacer size={variables.spacer4} />
-        <DialogAnimation />
+        <div>
+          <CTA text={cards[0].title} loading="0" />
+          <Spacer size={variables.spacer4} />
+          <CTA text={cards[1].title} theme={variables.ctaThemeB} loading="0" />
+          <Spacer size={variables.spacer4} />
+          <CTA text={cards[1].title} theme={variables.ctaThemeC} loading="20" />
+          <Spacer size={variables.spacer4} />
+          <CTA text="" theme={variables.ctaThemeD} loading="0" />
+          {/* <DialogAnimation /> */}
+        </div>
       </div>
+      <Spacer size={variables.spacer7} />
+      <HowItWorks />
+      <Spacer size={variables.spacer7} />
+      <HowItWorksB />
+      <Spacer size={variables.spacer7} />
+      <div className="row" />
+      <Spacer size={variables.spacer7} />
     </Container>
   );
 }
@@ -56,24 +69,29 @@ const GlobalStyle = createGlobalStyle`
 
   .row {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+    height: auto;
+    border-radius: ${variables.borderRadius}px;
+    border: 1px solid #f5f5f5;
+    margin: 0 auto;
+    padding: 5vw;
+    margin: 0 ${variables.spacer7}rem 0 ${variables.spacer7}rem;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
   }
 `;
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 90vw;
-  height: 90vh;
-  border-radius: ${variables.borderRadius}px;
-  border: 1px solid #f5f5f5;
-  margin: 5vh auto;
-  padding: 5vw;
+  display: block;
+  position: relative;
 `;
 
 // content
@@ -86,7 +104,7 @@ const cards = [
     imageRatio: 784 / 1016
   },
   {
-    title: "Tweak anything",
+    title: "Tweak anything \xa0",
     description:
       "Built with developers in mind. Change element structure, edit CSS, create components, add props and state. We give you access to the underlying React code so you can do what you need right in our tool.",
     image: "https://divjoy.com/static/images/undraw_upload.svg",

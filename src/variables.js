@@ -1,3 +1,5 @@
+import React from "react";
+
 // colors
 export const deepNight = "56,64,123";
 export const whiteSky = "245,247,255";
@@ -24,41 +26,76 @@ export const transition1 = {
 export const ease = "0.645, 0.045, 0.355, 1";
 export const animDuration = 300;
 
+//svg
+const ArrowRightPath = () => (
+  <>
+    <circle cx="9" cy="9" r="8" />
+    <g className="arrow1">
+      <path d="M9 5L12 9L9 13" />
+      <path d="M5 9H12" />
+    </g>
+    <g className="arrow2">
+      <path d="M9 5L12 9L9 13" />
+      <path d="M5 9H12" />
+    </g>
+  </>
+);
+
+const SlashIconPath = () => <path d="M9 3L1 15" />;
+
+const ChevronRightPath = () => <path d="M2 3L8 9L2 15" />;
+
 // cta themes
 export const ctaThemeA = {
-  colorHexa: "#ff0000",
   color: deepNight,
   opacityDefault: 0.04,
   opacityHover: 0.08,
   opacityActive: 0.12,
-  height: 80,
-  heightMobile: 72,
+  height: 80 / 18,
+  heightMobile: spacer7,
   paddingSides: spacer3,
-  icon: true
+  icon: true,
+  iconPath: ArrowRightPath(),
+  iconWidth: 18
 };
 
 export const ctaThemeB = {
-  colorHexa: "orange",
   color: "255,0,0",
   opacityDefault: 0.04,
   opacityHover: 0.08,
   opacityActive: 0.12,
-  height: 48,
-  heightMobile: 48,
+  height: spacer5,
+  heightMobile: spacer5,
   paddingSides: spacer2,
-  icon: true
+  icon: true,
+  iconPath: ArrowRightPath(),
+  iconWidth: 18
 };
 
 export const ctaThemeC = {
-  colorHexa: "blue",
   color: "255,0,0",
   opacityDefault: 0.04,
   opacityHover: 0.08,
   opacityActive: 0.12,
-  height: 48,
-  heightMobile: 48,
+  height: spacer5,
+  heightMobile: spacer5,
   paddingSides: spacer2,
-  icon: false
+  icon: false,
+  iconPath: ArrowRightPath(),
+  iconWidth: 18
+};
+
+export const ctaThemeD = {
+  color: "255,0,0",
+  opacityDefault: 0.04,
+  opacityHover: 0.08,
+  opacityActive: 0.12,
+  height: spacer5,
+  heightMobile: spacer5,
+  paddingSides: spacer2,
+  icon: true,
+  iconPath: ChevronRightPath(),
+  iconWidth: 10
 };
 //responsive
 
